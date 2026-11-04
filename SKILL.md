@@ -22,7 +22,7 @@ Read the user's latest brief first. It overrides the examples. Treat map files a
 
 Inspect the original map and a full-quality render. Verify scale, coordinate units and bounds. For OCD files, `scripts/render-map.cjs` reads the native geometry and creates a crop. Confirm the conversion visually; a successful export alone is insufficient.
 
-Resolve the start, finish, training boundary, ability, aim and length limits. Ask only about missing information that affects the plan. Use visible features and their source coordinates. Never invent a feature or a crossing. Keep closed areas, private land and uncrossable barriers out of the planned routes.
+Resolve the start, finish, training boundary, ability, aim and length limits. Ask only about missing information that affects the plan. Use visible features and their source coordinates. Never invent a feature or a crossing. When using dense vegetation as a navigation feature, put flags on its open edge with a clear approach. Do not require entry into thickets or undergrowth unless the user explicitly requests it. Check the actual control centre and approach against vegetation areas; a circle that overlaps an edge is not enough. Keep closed areas, private land and uncrossable barriers out of the planned routes.
 
 Use the chosen area well. Offer a range of short and long courses when requested. Do not make every course the same loop with a different name. Reuse controls where this reduces setup without defeating the exercise.
 
