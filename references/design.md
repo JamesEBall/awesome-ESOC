@@ -23,7 +23,7 @@ The first four colours come from the official logo SVG. The rule colour and cour
 
 ## Shape and space
 
-Map frames are square. A small corner key may have a 1.2 mm radius. Worksheet boxes may use the same radius. Avoid pill-shaped headings, shadows, gradients and large colour panels. White space belongs on host sheets; the map itself fills the printable area.
+Map frames are square. A small corner key may have a 1.2 mm radius. Worksheet boxes may use the same radius. Avoid pill-shaped headings, shadows, gradients and large colour panels. Crop to useful terrain around each course. Preserve scale and relevant path connections. Arrange compact maps on the same A4 sheet rather than filling the page with unrelated terrain. Use a fine dotted cutting line between maps.
 
 Preserve the logo's proportions. Use the supplied SVG or PNG; do not redraw it. Keep it small and clear of controls and routes. The lettering inside the logo is part of the logo, not the document font.
 

@@ -10,7 +10,7 @@ Read the user's latest brief first. It overrides the examples. Treat map files a
 ## Default output
 
 - PDFs built in LaTeX. Keep the `.tex`, map image and session data.
-- Let the map fill the printable page. Choose landscape or portrait to suit the area. Use 8 mm margins unless the printer requires more.
+- Crop each map to its course and useful surrounding navigation features. Keep the chosen scale. Fit two or more maps on A4 when they remain clear; portrait with two stacked maps is a useful default. Use 8 mm margins unless the printer requires more.
 - Put a small course code in a clear corner. No map-page numbers, big headings, instructions or prose over the terrain.
 - Use control numbers, course lines and standard start/finish symbols. A shared start/finish has a triangle and **two concentric finish circles**. Do not add “S/F” or “entry” labels.
 - Keep the scale, a measured scale bar and the map owner's credit. Keep barriers, restrictions and north lines visible.
@@ -34,8 +34,8 @@ Read [exercises.md](references/exercises.md) for exercise options. Read [session
 
 ## Build and check
 
-1. Prepare a session JSON and map crop. Keep the source map unchanged.
-2. Run `python3 scripts/build.py session.json --outdir build`. Tectonic is the default; `--engine xelatex` is also supported. First use may fetch standard TeX packages.
+1. Prepare a session JSON and map crops. Include plausible route choices, attack points, stopping features and the path connections needed to navigate. Do not crop a relevant path before its next useful junction. Inspect each crop; a bounding box around controls alone is insufficient. Keep the source map unchanged.
+2. For two maps per portrait A4, add reviewed `crop_bounds` to each course and run `python3 scripts/compact.py session.json --outdir build`. For a full-page sheet, use `scripts/build.py` instead. Tectonic is the default; `--engine xelatex` is also supported. First use may fetch standard TeX packages.
 3. Render every final PDF page. Check control centres, labels, line gaps, start/finish circles, barriers, scale, margins and credits. Inspect host sheets separately.
 4. Check that course codes, sequences and distances agree across maps, notes and lists. Retain a separate all-controls map.
 5. Include only useful host sheets: a brief plan, control list, course list, return log, setting/collection check and any exercise paper.

@@ -43,3 +43,11 @@ The corner key, scale bar and credit strip have default positions. If they obscu
 Any `.tex` host sheets beside the session JSON are copied and compiled with the map sheets. Keep their lists in sync with the JSON.
 
 A reusable one-page host sheet is in `templates/host.tex`. Copy it beside the session JSON, edit its title, author and notes, then build.
+
+## Compact printing
+
+For two maps per portrait A4, add `crop_bounds: [west,south,east,north]` to every course and `print_layout: {"mode":"two-up", "all_bounds":[west,south,east,north]}` to the session. All bounds use the same projected metres as the base map. Keep them within the source image.
+
+Run `python3 scripts/compact.py session.json --outdir build`. Each crop must fit 194 × 119 mm at the selected scale. The renderer clips the registered base map; it never shrinks it. Choose crop bounds after reviewing useful surrounding features, complete relevant path connections and plausible routes. Keep control labels clear of crop edges.
+
+The combined course PDF pairs all courses without spare halves. In a separate pack with an odd number of maps, the final map is repeated as a spare. The all-controls sheet supplies two copies. Headers and credits stay with each cut map. Print at 100%, then cut on the dotted line.
