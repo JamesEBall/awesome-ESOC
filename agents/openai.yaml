@@ -1,0 +1,5 @@
+interface:
+  display_name: "ESOC maps and exercises"
+  short_description: "Build ESOC training maps and host sheets"
+  default_prompt: "Use $esoc-map-kit to create a training session from my map."
+  brand_color: "#006B00"
