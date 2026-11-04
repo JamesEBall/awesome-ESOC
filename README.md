@@ -1,7 +1,9 @@
+![Edinburgh Southern Orienteering Club](assets/esoc-banner.svg)
+
 # awesome-ESOC
 
 AI rules for creating Edinburgh Southern Orienteering Club exercises with coding harnesses.
 
-Read [SKILL.md](SKILL.md). Supply a map and a short brief. The kit produces PDFs in LaTeX, using ESOC colours and Source Sans 3.
+Supply a map and a short brief. Create printable PDFs and editable LaTeX, using ESOC colours and Source Sans 3.
 
-[Build instructions](references/session-format.md).
+**[Rules](SKILL.md)** · **[Build](references/session-format.md)** · **[Design](references/design.md)** · **[Exercises](references/exercises.md)**
