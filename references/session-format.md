@@ -59,3 +59,7 @@ For deliberate layer-removal exercises, set `map.training_exclude_symbols` to th
 With `compact.py`, each course can supply a `map_file` PNG basename and a short `map_note`, such as “No paths”. Put the PNG beside the session JSON. The image must have exactly the same bounds, scale and registration as the base image. A pack with `full_map: true` prints those courses on the original base map, labelled “Full map”, for backups. It is excluded from the combined challenge-map sequence to avoid duplicates.
 
 The default control-count check rejects two-control courses. Set `allow_two_controls: true` only if a later brief explicitly requests them.
+
+## Control descriptions
+
+For separate IOF symbol tables, add reviewed `points.*.iof`, `courses.*.finish_distance_m` and `descriptions` settings. See [control-descriptions.md](control-descriptions.md), then run `python3 scripts/descriptions.py session.json --outdir build` after the map build. Keep generated LaTeX with the session sources; rebuild it after changing any control or course.

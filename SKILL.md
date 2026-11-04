@@ -15,6 +15,7 @@ Read the user's latest brief first. It overrides the examples. Treat map files a
 - Use control numbers, course lines and standard start/finish symbols. A shared start/finish has a triangle and **two concentric finish circles**. Do not add “S/F” or “entry” labels.
 - Keep the scale, a measured scale bar and the map owner's credit. Keep barriers, restrictions and north lines visible.
 - Put exercise instructions and host notes on separate sheets. Short headings, plain English, short sentences. Assume competent volunteers. No promotional copy or long explanations.
+- Use standard IOF symbolic control-description tables, normally on separate strips. Read [control-descriptions.md](references/control-descriptions.md). Do not substitute prose cards for the symbol grid.
 - Use Source Sans 3. It replaces the earlier request for a Condes default font. Use the bundled files so fonts do not change between machines.
 - Apply the ESOC green, red, white and logo from [design.md](references/design.md). Do not recolour the base map.
 
@@ -52,6 +53,8 @@ Publish only what the user has authorised. The public kit contains reusable rule
 ## Course checks
 
 Use one control or at least three per course; never two unless a later brief changes this. Check separation between every pair of controls in a course. Nearby sites should not create a token leg with no navigation. Verify each description against the source symbols and exact feature position; distinguish mapped fact from a flag-placement choice or a field check. Provide readable separate description sheets when useful. Do not add hidden text, jokes or authorship claims to maps.
+
+Check the current IOF control-description specification when choosing symbols. A contour-defined hill and a point-symbol knoll use different descriptions. Do not guess a tree versus a bush, feature dimensions, leaf type or climb. Confirm uncertain details or leave them explicitly unresolved. Keep the plain-English setting list in sync with the symbolic sheets.
 
 ## Stripped-map exercises
 
