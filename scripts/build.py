@@ -16,6 +16,7 @@ def validate(d):
  for k,p in d['points'].items():
   x,y=p['xy'];assert b[0]<=x<=b[2] and b[1]<=y<=b[3],f'{k} outside map'
  for name,c in d['courses'].items():
+  assert d.get('allow_two_controls',False) or len(c['controls'])!=2,f'{name}: use one control or at least three'
   if c.get('distance_m') is not None:
    assert 0<c['distance_m']<=d.get('max_total_m',float('inf')),f'{name}: invalid distance or exceeds cap'
   assert c['controls'] and all(str(x) in d['points'] for x in c['controls']),f'{name}: missing control'

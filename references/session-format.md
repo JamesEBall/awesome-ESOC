@@ -51,3 +51,11 @@ For two maps per portrait A4, add `crop_bounds: [west,south,east,north]` to ever
 Run `python3 scripts/compact.py session.json --outdir build`. Each crop must fit 194 × 119 mm at the selected scale. The renderer clips the registered base map; it never shrinks it. Choose crop bounds after reviewing useful surrounding features, complete relevant path connections and plausible routes. Keep control labels clear of crop edges.
 
 The combined course PDF pairs all courses without spare halves. In a separate pack with an odd number of maps, the final map is repeated as a spare. The all-controls sheet supplies two copies. Headers and credits stay with each cut map. Print at 100%, then cut on the dotted line.
+
+## Training variants
+
+For deliberate layer-removal exercises, set `map.training_exclude_symbols` to the verified source symbol numbers to hide, then render a separate PNG. Inspect the source symbol definitions first: numbers vary between maps. Keep barriers, restrictions, hazards, thick vegetation and undergrowth. Keep the actual control features visible. This option is distinct from layout-object cleanup.
+
+With `compact.py`, each course can supply a `map_file` PNG basename and a short `map_note`, such as “No paths”. Put the PNG beside the session JSON. The image must have exactly the same bounds, scale and registration as the base image. A pack with `full_map: true` prints those courses on the original base map, labelled “Full map”, for backups. It is excluded from the combined challenge-map sequence to avoid duplicates.
+
+The default control-count check rejects two-control courses. Set `allow_two_controls: true` only if a later brief explicitly requests them.

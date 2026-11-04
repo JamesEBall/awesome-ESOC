@@ -2,7 +2,7 @@
 """Two cropped maps per portrait A4; source scale is preserved."""
 import argparse,copy,json,shutil
 from pathlib import Path
-from build import preamble,map_content,tex,compile_tex,KIT
+from build import preamble,map_content,tex,compile_tex,KIT,validate
 
 def panel(d,name,mode,b,top):
  unit=1000/d['map']['scale'];w=(b[2]-b[0])*unit;h=(b[3]-b[1])*unit
@@ -16,9 +16,10 @@ def panel(d,name,mode,b,top):
  used=list(d['points']) if mode=='all' else ['S','J']+seq
  for k in used:
   x,y=d['points'][k]['xy'];assert b[0]+8<=x<=b[2]-8 and b[1]+8<=y<=b[3]-8,f'{name}: {k} too close to crop'
- out=[rf'\begin{{scope}}\clip ({left},{bottom}) rectangle ++({w},{h});',map_content(local,mode,seq),r'\end{scope}']
+ out=[rf'\begin{{scope}}\clip ({left},{bottom}) rectangle ++({w},{h});',map_content(local,mode,seq).replace('{map.png}','{'+c.get('map_file','map.png')+'}'),r'\end{scope}']
  title=name if name else 'All controls';length=f" · {c['distance_m']} m" if c.get('distance_m') else ''
  out += [rf'\Put{{{left}}}{{{top}}}{{90}}{{12}}{{\bfseries\color{{ESOCGreen}}{tex(title)}}}',rf'\Put{{{left+25}}}{{{top-1}}}{{80}}{{8}}{{1:{d["map"]["scale"]:,}{tex(length)}}}',rf'\node[anchor=north east,inner sep=0pt] at ({left+w},{top+1}) {{\includegraphics[height=8mm]{{assets/esoc-logo.png}}}};']
+ if c.get('map_note'):out.append(rf'\Put{{{left}}}{{{top-6}}}{{100}}{{10}}{{{tex(c["map_note"])}}}')
  bar=50*unit;bx=left+w-43;by=top-4
  out +=[rf'\draw[line width=.25mm] ({bx},{by})--++({bar},0);',rf'\Put{{{bx}}}{{{by-2}}}{{35}}{{6}}{{50 m}}']
  for x in [bx,bx+bar]:out.append(rf'\draw[line width=.25mm] ({x},{by-1})--++(0,2);')
@@ -39,12 +40,21 @@ def build(d,names,mode,path,engine):
  out.append(r'\end{document}');path.write_text('\n'.join(out));compile_tex(path,engine)
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('session',type=Path);ap.add_argument('--outdir',type=Path,required=True);ap.add_argument('--engine',default='tectonic');a=ap.parse_args();d=json.loads(a.session.read_text());o=a.outdir;o.mkdir(parents=True,exist_ok=True)
+ ap=argparse.ArgumentParser();ap.add_argument('session',type=Path);ap.add_argument('--outdir',type=Path,required=True);ap.add_argument('--engine',default='tectonic');a=ap.parse_args();d=json.loads(a.session.read_text());validate(d);o=a.outdir;o.mkdir(parents=True,exist_ok=True)
  shutil.copytree(KIT/'assets',o/'assets',dirs_exist_ok=True);shutil.copy2(a.session.parent/d['map']['file'],o/'map.png')
+ for c in d['courses'].values():
+  if c.get('map_file'):
+   f=c['map_file'];assert Path(f).name==f and f.endswith('.png'),'Map file must be a PNG basename'
+   shutil.copy2(a.session.parent/f,o/f)
  all_names=[]
  for p in d['packs']:
-  mode=p.get('mode','normal');names=p['courses'] or [''];build(d,names,mode,o/(p['file']+'.tex'),a.engine)
-  if mode=='normal':all_names+=names
+  mode=p.get('mode','normal');names=p['courses'] or [''];data=d
+  if p.get('full_map'):
+   data=copy.deepcopy(d)
+   for n in names:
+    data['courses'][n].pop('map_file',None);data['courses'][n]['map_note']='Full map'
+  build(data,names,mode,o/(p['file']+'.tex'),a.engine)
+  if mode=='normal' and not p.get('full_map'):all_names+=names
  build(d,all_names,'normal',o/'00-all-course-maps.tex',a.engine)
  for f in a.session.parent.glob('*.tex'):
   shutil.copy2(f,o/f.name);compile_tex(o/f.name,a.engine)

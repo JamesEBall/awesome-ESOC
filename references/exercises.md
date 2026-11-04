@@ -20,3 +20,7 @@ For a range of abilities, vary leg length, number of decisions and feature diffi
 For memory and sketch work, never remove the option to use a full map if lost. Route simplification means choosing useful detail, not hiding hazards or restrictions.
 
 Host notes should fit the task: setup, timing, boundaries, return time, control list and collection. Use current club procedures for the formal risk assessment and consent arrangements.
+
+Layer removal: remove paths, or paths and contours, while retaining hazards and each control feature. Supply a matching full-map backup.
+
+Relocation: work in pairs on a full map. One leads while the partner folds their map. Stop at a safe, clear point; the partner locates themselves, then takes over. Stay within the planned loop.

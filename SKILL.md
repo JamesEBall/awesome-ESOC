@@ -48,3 +48,11 @@ The corner key, scale bar and footer use default positions. Check what they cove
 ## Sharing
 
 Publish only what the user has authorised. The public kit contains reusable rules, design assets, templates and tools. Do not publish event maps, participant details or private working files merely because the kit is public. Keep third-party credits and the bundled font licence.
+
+## Course checks
+
+Use one control or at least three per course; never two unless a later brief changes this. Check separation between every pair of controls in a course. Nearby sites should not create a token leg with no navigation. Verify each description against the source symbols and exact feature position; distinguish mapped fact from a flag-placement choice or a field check. Provide readable separate description sheets when useful. Do not add hidden text, jokes or authorship claims to maps.
+
+## Stripped-map exercises
+
+When requested, remove selected navigation layers from a working copy. Preserve barriers, restrictions, hazards, dense vegetation and undergrowth. Keep every chosen control feature identifiable on the edited map. Label the missing layers clearly, provide a matching full-map backup, and put short instructions on a separate host sheet. Use deliberate simplification, not random damage. Keep the original map unchanged.

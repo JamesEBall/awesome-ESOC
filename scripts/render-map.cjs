@@ -14,11 +14,12 @@ async function main(){
  const file=await readOcad(input), crs=file.getCrs();
  // Exclude only individually verified layout objects from this in-memory copy.
  const excluded=new Set(m.exclude_objects||[]);
- if(excluded.size) file.objects=file.objects.filter(o=>!excluded.has(o.objIndex._index));
+ const hidden=new Set(m.training_exclude_symbols||[]);
+ if(excluded.size||hidden.size) file.objects=file.objects.filter(o=>!excluded.has(o.objIndex._index)&&!hidden.has(o.sym));
  const dpi=m.dpi||400, resolution=m.scale/1000*25.4/dpi;
  fs.mkdirSync(path.dirname(output),{recursive:true});
  await render(new OcadTiler(file),bounds,resolution,{outputPath:output,fill:'white'});
- fs.writeFileSync(output+'.info.json',JSON.stringify({source:path.basename(input),sourceScale:crs.scale,printScale:m.scale,crs:crs.code||crs.gridId||crs.epsg||null,bounds,excludedObjects:[...excluded],resolutionMetresPerPixel:resolution,warnings:file.warnings||[]},null,2)+'\n');
+ fs.writeFileSync(output+'.info.json',JSON.stringify({source:path.basename(input),sourceScale:crs.scale,printScale:m.scale,crs:crs.code||crs.gridId||crs.epsg||null,bounds,excludedObjects:[...excluded],trainingExcludedSymbols:[...hidden],resolutionMetresPerPixel:resolution,warnings:file.warnings||[]},null,2)+'\n');
  console.log(output);
 }
 main().catch(e=>{console.error(e.message);process.exit(1)});
