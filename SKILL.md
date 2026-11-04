@@ -26,7 +26,7 @@ Resolve the start, finish, training boundary, ability, aim and length limits. As
 
 Use the chosen area well. Offer a range of short and long courses when requested. Do not make every course the same loop with a different name. Reuse controls where this reduces setup without defeating the exercise.
 
-For harder simplification, use verified contour features: knolls, depressions, spurs or re-entrants. Plan legs with an attack point and a clear stopping feature. Increase the navigation challenge without simply increasing distance. Keep some easier choices for a mixed group. Do not put flags on dangerous cliff edges.
+For harder simplification, use verified contour features: knolls, depressions, spurs or re-entrants. Plan legs with an attack point and a clear stopping feature. Increase the navigation challenge without simply increasing distance. Include beginner choices only when they suit the current brief. If the user raises the level, replace beginner courses throughout the session, including bonus exercises and host notes. Short courses should still require meaningful navigation. Do not put flags on dangerous cliff edges.
 
 If a total distance cap is given, include the route to the woods and back. Measure a plausible passable route, including detours around barriers. A straight-line sum cannot establish compliance with that cap. Leave a margin. Keep the measurement method and route geometry with the session. State that these remain map-based estimates until checked on the ground.
 
