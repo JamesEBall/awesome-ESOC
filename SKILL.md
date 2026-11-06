@@ -31,6 +31,8 @@ For harder simplification, use verified contour features: knolls, depressions, s
 
 If a total distance cap is given, include the route to the woods and back. Measure a plausible passable route, including detours around barriers. A straight-line sum cannot establish compliance with that cap. Leave a margin. Keep the measurement method and route geometry with the session. State that these remain map-based estimates until checked on the ground.
 
+When moving a shared base, recalculate every loop and finish leg. Update all maps, backups, descriptions and host notes. If the new base is inside the training area, distinguish the one-off walk there from each exercise distance. Remove obsolete taped-route instructions and keep course lines clear of the double finish circle.
+
 Read [exercises.md](references/exercises.md) for exercise options. Read [session-format.md](references/session-format.md) when using the renderer. A session may use other exercises; do not force it into the Ravelston example.
 
 ## Build and check

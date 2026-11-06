@@ -42,8 +42,13 @@ def map_content(d,mode,seq):
  def point(k):return pos(d['points'][k]['xy'])
  out=[rf'\node[anchor=south west,inner sep=0pt] at ({x0},{y0}) {{\includegraphics[width={width:.4f}mm,height={height:.4f}mm]{{map.png}}}};',rf'\draw[ESOCRule,line width=.15mm] ({x0},{y0}) rectangle ++({width:.4f},{height:.4f});']
  if mode!='blank':
-  # A combined start/finish symbol. Its apex follows the compulsory path.
-  sx,sy=point('S');out+=[rf'\draw[CoursePurple,line width=.35mm] ({sx},{sy}) circle[radius=3.8mm];',rf'\draw[CoursePurple,line width=.35mm] ({sx},{sy}) circle[radius=3mm];',rf'\draw[CoursePurple,line width=.35mm] ({sx},{sy-3.2})--({sx-2.77},{sy+1.6})--({sx+2.77},{sy+1.6})--cycle;']
+  # Aim the triangle along the marked access, or towards the first control.
+  sx,sy=point('S')
+  towards=next((pos(p) for p in d.get('access',[]) if math.dist(pos(p),(sx,sy))>.1),None)
+  if towards is None:towards=point(seq[0]) if mode=='normal' and seq else (sx,sy+1)
+  angle=math.atan2(towards[1]-sy,towards[0]-sx)
+  vertices=[(sx+3.2*math.cos(angle+i*2*math.pi/3),sy+3.2*math.sin(angle+i*2*math.pi/3)) for i in range(3)]
+  out+=[rf'\draw[CoursePurple,line width=.35mm] ({sx},{sy}) circle[radius=3.8mm];',rf'\draw[CoursePurple,line width=.35mm] ({sx},{sy}) circle[radius=3mm];',r'\draw[CoursePurple,line width=.35mm] '+'--'.join(map(coord,vertices))+'--cycle;']
   path=[pos(p) for p in d.get('access',[])];start=path[0] if path else (sx,sy)
   # Stop the marked path at the outside of the combined symbol.
   for i,p in enumerate(path[1:],1):
@@ -54,7 +59,8 @@ def map_content(d,mode,seq):
  if mode=='normal':
   route=['J']+seq+['J']
   for a,bk in zip(route,route[1:]):
-   p=point(a);q=point(bk);dist=math.dist(p,q);ra=0 if a=='J' else 3.4;rb=0 if bk=='J' else 3.4
+   base_gap=4.2 if math.dist(point('J'),point('S'))<.01 else 0
+   p=point(a);q=point(bk);dist=math.dist(p,q);ra=base_gap if a=='J' else 3.4;rb=base_gap if bk=='J' else 3.4
    if dist<=ra+rb:continue
    v=((q[0]-p[0])/dist,(q[1]-p[1])/dist)
    p=(p[0]+v[0]*ra,p[1]+v[1]*ra);q=(q[0]-v[0]*rb,q[1]-v[1]*rb)
